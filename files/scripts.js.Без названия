@@ -1,0 +1,493 @@
+ymaps.ready(init);
+function init(){
+  // Создание карты.
+  let myMap = new ymaps.Map("map", {
+    center: [55.72701906902205,37.86047699999994],
+    zoom: 16,
+    controls: ['zoomControl']
+  });
+
+  let glyphIcon = new ymaps.Placemark([55.72701906902205,37.86047699999994], {
+    // hintContent: '1 Электрический',
+    balloonContent: '<strong>1 Электрический</strong> <br>' +
+                    '<strong>Адрес:</strong> г. Москва, ул. Салтыковская, д. 8, офис 208<br>' +
+                    '<strong>Тел.:</strong> +7 999 123 45 89, 8 (3432) 336 45 21'
+  }, {
+    iconLayout: 'default#image',
+    iconImageHref: '/images/marker.svg',
+    iconImageSize: [97, 100],
+    iconImageOffset: [-45, -100]
+  });
+  myMap.geoObjects.add(glyphIcon);
+}
+
+
+
+$(document).ready(function () {
+  // $('.open>.scrollbar-inner').scrollbar();
+  $('.scrollbar-inner').scrollbar();
+  $('.scrollbar-outer').scrollbar();
+  $('.scrollbar-dynamic').scrollbar();
+
+
+  let closeBlock = function(sel, cls, bodyCls) {
+    $(sel).removeClass(cls);
+    $(sel).find('.' + cls).removeClass(cls);
+    if (bodyCls) $('body').removeClass(bodyCls);
+  }
+
+  $('.burger').on('click',function (e) {
+    e.preventDefault();
+    $(this).toggleClass('open');
+    $(this).closest('.menu-block').toggleClass('open');
+    $('body').toggleClass('menu-opened');
+  });
+
+  $('.header-search-mobile-btn').on('click',function (e) {
+    e.preventDefault();
+    e.currentTarget.parentNode.classList.toggle('open');
+    $('body').toggleClass('search-form-opened');
+  });
+
+
+  $(document).click(function(e) {
+    e.stopPropagation();
+    let menuOpened = $('body').hasClass('menu-opened');
+    let headerSearchOpened = $('body').hasClass('search-form-opened');
+
+    if (!$(e.target).closest('.menu-block').length && menuOpened) {
+      closeBlock('.menu-block','open','menu-opened')
+    }
+
+    if (!$(e.target).closest(".header-search-block").length && headerSearchOpened) {
+      closeBlock('.header-search-block','open','search-form-opened')
+    }
+
+  });
+
+// закрытие меню - конец
+
+  let validateFiled = function(el) {
+    const emailValidStr = new RegExp('.+@.+\\..+');
+    const phoneValidStr = new RegExp('^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$');
+
+    let elType = el.type;
+    let elVal = el.value;
+    let elReq = el.required;
+    let valid = false;
+    switch (elType) {
+      case 'number' :
+        valid = parseInt(elVal,10) || 0;
+        break;
+      case 'tel' :
+        valid = phoneValidStr.test(elVal) || elVal.length === 0;
+        break;
+      case 'email' :
+        valid = emailValidStr.test(elVal) || elVal.length === 0;
+        break;
+      case 'text' :
+        valid = (elVal.length > 0 && elReq) || (elVal.length >= 0 && !elReq);
+        break;
+      case 'password' :
+        valid = (elVal.length > 0 && elReq) || (elVal.length >= 0 && !elReq);
+        break;
+      case 'textarea' :
+        valid = (elVal.length > 0 && elReq) || (elVal.length >= 0 && !elReq);
+        break;
+    }
+    return valid;
+  }
+
+
+ let setValidateClasses = function(el){
+   let formItem = el.closest('.form-item').classList;
+   if(el.value.length) {
+     if (!validateFiled(el)) {
+       formItem.add('validate-error');
+       formItem.remove('valid')
+     } else {
+       formItem.add('valid')
+       formItem.remove('validate-error')
+     }
+   } else {
+     formItem.remove('validate-error');
+     formItem.remove('valid')
+   }
+
+ }
+
+  $('.form-item input, .form-item textarea').on('blur',function (e) {
+    e.preventDefault();
+    setValidateClasses(e.currentTarget);
+  });
+
+  $('.disabled').find('input, textarea').each(function () {
+    this.setAttribute('disabled', 'disabled');
+  });
+
+  let inputNumberUpdateByClick = function(e, up){
+   // up = true - листаем вверх
+   // up = false - листаем вниз
+    let inp = document.querySelector('input[data-input-id="' + e.currentTarget.parentNode.dataset.inputId + '"]');
+    if(inp) {
+      if (up) {
+        let val = parseInt(inp.value, 10) || 0;
+        inp.value = val + 1;
+      } else {
+        let val = parseInt(inp.value, 10) || 1;
+        if (val > 1) val--;
+        inp.value = val;
+
+      }
+    }
+  }
+
+  $('.arrow.up').on('click',function (e) {
+    let inp = document.querySelector('input[data-input-id="' + e.currentTarget.parentNode.dataset.inputId + '"]');
+      inputNumberUpdateByClick (e,1);
+      setValidateClasses(inp);
+  });
+
+  $('.arrow.down').on('click',function (e) {
+    let inp = document.querySelector('input[data-input-id="' + e.currentTarget.parentNode.dataset.inputId + '"]');
+      inputNumberUpdateByClick (e,0);
+      setValidateClasses(inp);
+  });
+
+
+
+  $('.count.up').on('click',function (e) {
+      inputNumberUpdateByClick (e,1);
+  });
+
+  $('.count.down').on('click',function (e) {
+      inputNumberUpdateByClick (e,0);
+  });
+
+  $('input[data-input-id]').on('keydown',function (e) {
+    let key = e.key;
+    return (key >= '0' && key <= '9') || key == 'ArrowLeft' || key == 'ArrowRight' || key == 'Delete' || key == 'Backspace';
+  });
+
+
+
+  $('.question-title').on('click',function (e) {
+    e.preventDefault();
+    let parent = e.currentTarget.parentNode;
+    let parentOpened = parent.classList.contains('open');
+    document.querySelectorAll('.question-card.open')
+        .forEach((el) => el.classList.remove('open') );
+
+    if (!parentOpened) setTimeout(() => parent.classList.add('open'), 300 );
+  });
+
+  let fixedHeader = function(){
+    let h = $('.header-row-1').outerHeight();
+    if ($(window).scrollTop() > h) {
+      if (!$('.header-row-1').hasClass('fixed')) {
+
+        $('.header-row-1').offset({top:-h});
+        $('.header-row-1').addClass('fixed');
+
+        $('.header-row-1').animate({top : 0},500);
+
+      }
+    } else {
+      if ($('.header-row-1').hasClass('fixed')) {
+        $('.header-row-1').attr('style','');
+        $('.header-row-1').removeClass('fixed');
+      }
+    }
+
+  }
+
+  $(window).on('load scroll', function () {
+    fixedHeader();
+  });
+
+  let getTooltip = function (el) {
+    for (let elem of el.children)
+      if (elem.classList.contains('tooltip'))  return elem;
+
+    return false;
+  }
+
+  let getTooltipContainer = function(el) {
+    // возвращает ближайшего предка с overflow = hidden или классом '.container' или body
+    let elOverflow;
+    do {
+      el = el.parentElement
+      elOverflow = getComputedStyle(el, null).getPropertyValue('overflow')
+    } while ( !el.classList.contains('container') && elOverflow != 'hidden')
+    return el || document.body;
+  }
+
+  let toggleTooltip = function (tooltip, state = false) {
+    if (!tooltip) return;
+    let triangle = tooltip.querySelector('.tooltip-triangle');
+
+    if (state) { // show tooltip
+      tooltip.style.opacity = '0';
+      tooltip.style.display = 'block';
+
+      let el = tooltip.parentNode;            // инициализирующий элемент
+      let elBox = el.getBoundingClientRect(); // координаты инициализирующего элемента
+      let parentBox = el.parentNode.getBoundingClientRect(); // координаты родителя инициализирующего элемента (отностиельно него позиционируем tooltip)
+      let body = getTooltipContainer(tooltip).getBoundingClientRect(); // координаты глобального контейнера за пределы которого не должен выходить tooltip
+
+      let tBox = tooltip.getBoundingClientRect(); // координаты tooltip
+      let triangleBox = triangle.getBoundingClientRect();
+
+      tooltip.style.display = '';
+      tooltip.style.opacity = '';
+
+      let tooltipPos = {};
+      tooltipPos.triangle = {};
+
+      if (elBox.right + tBox.width < body.right) { // tooltip помещается справа
+        tooltipPos.type = 'right';
+        tooltipPos.left = el.offsetLeft + el.offsetWidth + triangleBox.width;
+        tooltipPos.triangle.left = -triangleBox.width;
+
+        if((elBox.top - elBox.height/2)- tBox.height/2 < body.top) {
+          // tooltip выходит за пределы (top) глобального контейнера
+          tooltipPos.top = body.top - (elBox.top - elBox.height/2);
+          tooltipPos.triangle.top = -tooltipPos.top - triangleBox.height/2;
+        } else {
+          tooltipPos.top = el.offsetTop + el.offsetHeight/2 - tBox.height/2;
+          tooltipPos.triangle.top = tBox.height/2 - triangleBox.height/2;
+        }
+
+
+      } else {
+        tooltipPos.type = 'bottom';
+        tooltipPos.triangle.top = -1.2*triangleBox.width;
+        tooltipPos.top = el.offsetTop + el.offsetHeight  + (-tooltipPos.triangle.top);
+
+        tooltipPos.triangle.rotate = '90deg';
+
+        if ((elBox.right - elBox.width/2) + tBox.width / 2 > body.right) {
+          // tooltip выходит за пределы (right) глобального контейнера
+          let delta = (elBox.right - elBox.width/2) + tBox.width / 2 - body.right;
+          tooltipPos.left = el.offsetLeft + el.offsetWidth/2 - tBox.width / 2 - delta - 20;
+          tooltipPos.triangle.left = tBox.width/2 - triangleBox.height/2 + delta + 20;
+        } else {
+          let delta = (elBox.right - elBox.width/2) + tBox.width / 2 - body.right;
+          tooltipPos.left = el.offsetLeft + el.offsetWidth/2;
+          if (delta < 0) {
+            tooltipPos.left = tooltipPos.left - tBox.width/2;
+            if (tooltipPos.left + parentBox.left < body.left) tooltipPos.left = 0
+
+          }else{
+            tooltipPos.left = tooltipPos.left - delta;
+          }
+          tooltipPos.triangle.left = el.offsetLeft + el.offsetWidth/2 - tooltipPos.left -triangleBox.height/2;
+        }
+      }
+      tooltip.style.left = tooltipPos.left + 'px';
+      tooltip.style.top = tooltipPos.top + 'px';
+      triangle.style.top = tooltipPos.triangle.top + 'px';
+      triangle.style.left = tooltipPos.triangle.left + 'px';
+
+      if (tooltipPos.type == 'bottom') {
+        triangle.style.transform = 'rotate(' + tooltipPos.triangle.rotate + ')';
+      }
+      tooltip.classList.add('show');
+      tooltip.closest('.tooltip-link').classList.add('show');
+
+    } else { // hide tooltip
+      tooltip.classList.remove('show');
+      tooltip.closest('.tooltip-link').classList.remove('show');
+      tooltip.removeAttribute('style');
+      triangle.removeAttribute('style');
+    }
+}
+
+
+
+  $('.tooltip-link').on('mouseenter', function (e) {
+    e.stopPropagation();
+    if (e.target.closest('.tooltip-close')) return;
+    let el = e.currentTarget;
+    let tooltip = getTooltip(el);
+    toggleTooltip(tooltip,true)
+  });
+
+  $('.tooltip-link').on('mouseleave', function (e) {
+    e.stopPropagation();
+    let el = e.currentTarget;
+    let tooltip = getTooltip(el);
+    toggleTooltip(tooltip,false)
+  });
+
+  $('.tooltip-close').on('click', function (e) {
+    e.preventDefault();
+    let tooltip = e.currentTarget.closest('.tooltip');
+    console.log(tooltip);
+    toggleTooltip(tooltip,false)
+  });
+
+  let moveNavTabs = function(el){
+    let lp = el.offsetLeft + el.offsetWidth;
+    let navTabs = el.parentNode;
+    let win = window.innerWidth;
+    if (lp > win) {
+      navTabs.style.marginLeft = win - lp + 'px';
+    } else {
+      navTabs.style.marginLeft = 'initial'
+    }
+  }
+
+  $('.nav-tabs-item').on('click', function (e) {
+    e.preventDefault();
+    let el = e.currentTarget;
+    if (el.classList.contains('active')) {
+      moveNavTabs(el);
+      return;
+    }
+    let otherShow = el.parentNode.querySelectorAll('.active');
+
+    otherShow.forEach((elem) => {
+      let id = elem.dataset.tabId.replace(/#/g, '');
+      let tab = document.getElementById(id);
+      elem.classList.remove('active');
+      // tab.classList.remove('active');
+      tab.classList.remove('active');
+      tab.closest('.tabs-content').style.overflow='hidden';
+      // tab.classList.add('go-left');
+      setTimeout((el)=> {
+        // el.classList.remove('go-left');
+        el.closest('.tabs-content').style.overflow='';
+      },500,tab)
+    })
+
+    let id = el.dataset.tabId.replace(/#/g, '');
+    let tab = document.getElementById(id);
+    tab.closest('.tabs-content').style.overflow='hidden';
+    el.classList.add('active');
+    tab.classList.add('active');
+    setTimeout((el)=> el.closest('.tabs-content').style.overflow='',500,tab)
+    moveNavTabs(el)
+  });
+
+
+
+  $('.radio input[type=radio]').on('click', function (e) {
+    // e.preventDefault();
+    let inp = e.currentTarget
+    let userType = inp.dataset.userType
+    let ulBlock = inp.closest('form').querySelector('.ul-block');
+
+    if (userType =="ul") {
+      ulBlock.classList.add('show')
+    } else {
+      ulBlock.classList.remove('show')
+    }
+  });
+
+  let closeModal = function(modal){
+    let modalSrc = modal.closest('.modal');
+    // let modalBgr = modalSrc.querySelector('.modal-bgr');
+    let modalBgr = document.getElementById('modal-bgr');
+
+    modalBgr.dataset.src='';
+    // modalBgr.style.background='';
+    modalBgr.removeAttribute('style');
+    modalSrc.removeAttribute('style');
+
+    modalBgr.classList.remove('open');
+    modalSrc.classList.remove('open');
+  }
+  let getModalCoords = function(elem,offsetTop,offsetLeft) {
+    offsetTop = offsetTop || 0;
+    offsetLeft = offsetLeft || 0;
+
+    let parent = elem.closest('.container');
+    let box = elem.getBoundingClientRect();
+    let boxParent = parent.getBoundingClientRect();
+    let body = document.body.getBoundingClientRect();
+    let boxParentPaddingRight = parseInt(window.getComputedStyle(parent, null).getPropertyValue('padding-right'),10);
+    // let boxParentPaddingRit = parseInt(window.getComputedStyle(parent, null).getPropertyValue('padding-left'),10);
+
+    let modalSrc = elem.dataset.src.replace(/#/g, '');
+    let modal = document.getElementById(modalSrc);
+    let modalBox = modal.getBoundingClientRect();
+
+    let res={};
+
+     if (box.left + modalBox.width <= boxParent.right-boxParentPaddingRight) {
+       res.left = box.left + offsetLeft
+     } else {
+       res.right = body.right - boxParent.right + boxParentPaddingRight - offsetLeft
+       // res.left = res.right - modalBox.width
+     }
+     res.top= box.top + box.height + offsetTop;
+
+    console.log('res: ', res);
+
+    return res
+  }
+
+  $('[data-openbox]').on('click', function (e) {
+    e.preventDefault();
+    // console.log(e);
+    let modal = e.currentTarget;                         //Инициализирующий Модалку элемент
+
+    let modalFixed = modal.dataset.fixed == "true";      // Открывать Модалку в режиме position: fixed?
+
+    let isModal = modal.closest('.modal');               // Инициализируем Дочернюю Модалку из Родительской Модалки?
+    let offs= {top:0};                                   // Координаты Модалки
+
+    if (isModal) {                                       // Дочернюю Модалку открываем по старым координатам
+
+      offs.top = parseInt(isModal.style.top,10);
+      if (isModal.style.left) offs.left = parseInt(isModal.style.left,10);
+      if (isModal.style.right) offs.right = parseInt(isModal.style.right,10);
+
+      closeModal(modal);                                                        // закрываем Родительскую Модалку
+
+    }
+
+    let modalSrcId = modal.dataset.src.replace(/#/g, ''); // Id Модалки
+    let modalOpenBox = modal.dataset.openbox;                                   // В каком режиме открывать Модалку
+    let modalSrc = document.getElementById(modalSrcId);                         // Сама Модалка
+
+    let modalBgr =  document.getElementById('modal-bgr');              // Подложка Модалки
+
+    modalBgr.dataset.src = modalSrcId;                                          // Запоминаем Id открываемой Модалки
+
+
+
+    if (modalOpenBox != 'modal') {                                              // Модалка открывается в режиме toolbox
+      if (!isModal) offs = getModalCoords(modal,12 );                  // Если это Родительская Модалка то вычисляем ее координаты
+      modalSrc.style.top = offs.top + 'px';
+      modalSrc.style.left = offs.left + 'px';
+      modalSrc.style.right = offs.right + 'px';
+      modalSrc.style.position = modalFixed ? 'fixed' : 'absolute';
+      modalBgr.style.background = 'transparent';
+    }
+
+
+// Открываем Модалку
+    modalBgr.classList.add('open');
+    modalSrc.classList.add('open');
+
+
+  });
+  $('[data-modal-close]').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    let modal = e.currentTarget;
+    let isNewModal = modal.dataset.src;
+    if (!isNewModal) closeModal(modal);
+  });
+  $('.modal-bgr').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation()
+    let modalBgr = e.currentTarget;
+    let modal = document.getElementById(modalBgr.dataset.src);
+    closeModal(modal);
+  });
+
+});
