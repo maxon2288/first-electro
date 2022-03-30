@@ -23,9 +23,11 @@
     <link href="./files/custom.css" type="text/css" data-template-style="true" rel="stylesheet">
 
 
-
-
-
+    <!-- new  -->
+    <link rel="stylesheet" href="new-files/css/select.css">
+    <link rel="stylesheet" href="new-files/css/file-drop.css">
+    <link rel="stylesheet" href="new-files/css/new.css">
+    <!-- new  -->
 
 
     <style type="text/css" data-ymaps="css-modules">
@@ -3149,31 +3151,16 @@
                             class="btn btn-primary">В корзину</a>
                     </div>
                 </div>
-                <div class="promo-card">
-                    <a href="http://1electro.h2.victory.su/#" class="promo-img">
-                        <img src="./files/promo4.png" alt="">
-                    </a>
-                    <div class="promo-info">
-                        <a href="http://1electro.h2.victory.su/#" class="promo-title">Название продукции в две
-                            строки</a>
-                        <div class="promo-prices">
-                            <div class="promo-price actual">
-                                <span>499000</span>
-                                <svg class="icon icon-ruble">
-                                    <use xlink:href="#icon-ruble"></use>
-                                </svg>
-                            </div>
-                            <div class="promo-price old">
-                                <span>529000</span>
-                                <svg class="icon icon-ruble">
-                                    <use xlink:href="#icon-ruble"></use>
-                                </svg>
-                            </div>
+                <!-- new  -->
+                <div class="promo-card promo-card-wait">
+                    <div class="promo-card-wait-content">
+                        <img src="new-files/img/promo.svg" alt="">
+                        <div class="promo-card-wait-text">
+                            СКОРО
                         </div>
-                        <a data-fancybox="" data-src="#addToBasket" data-modal="true" href="javascript:;"
-                            class="btn btn-primary">В корзину</a>
                     </div>
                 </div>
+                <!-- new end  -->
             </div>
             <!--  </div>-->
 
@@ -3202,32 +3189,49 @@
 
             </div>
         </section>
+        <!-- new   -->
+        <div class="collect">
+            <div class="collect__container">
+                <div class="collect__img">
+                    <img src="new-files/img/collect.png" alt="">
+                </div>
+                <div class="collect__title">
+                    <a data-openbox="modal" class="collect-overlay-container" data-serv="1" data-src="#modal-collect"  href="javascript:;" ><div class="collect-overlay"></div>Соберём корзину</a>, пришлём ссылку 
+                    на оплату и доставим
+                </div>
+            </div>
+        </div>
+        <!-- new  end -->
+        
+
+
+        <!-- new  -->
         <section class="service-section ">
             <!--  <div class="">-->
-            <h3>Сервис и помощь</h3>
+            <h3>Услуги</h3>
             <div class="service-content">
-                <a data-openbox="modal" data-src="#modal-rent" href="javascript:;" class="service-card">
-                    <svg class="icon icon-instr">
-                        <use xlink:href="#icon-instr"></use>
-                    </svg>
-                    <div class="service-card-link">Аренда электроинструмента</div>
+                <a data-serv-title="Проектирование" data-serv-desc="Данная услуга предполагает вызов Машины Первого прямо к дому, локация размещения авто до 100 м от указанной точки. Машина приезжает, заказ сопровождает консультант-экспедитор на месте, на месте оплачивается товар."  data-openbox="modal" data-serv="1" data-src="#modal-rent" href="javascript:;" class="service-card">
+                    <img src="new-files/img/serv-1.svg" alt="">
+
+                    <div class="service-card-link">Проект</div>
+                    <span class="serv-overlay"></span>
                 </a>
-                <a data-openbox="modal" data-src="#modal-rent" href="javascript:;" class="service-card">
-                    <svg class="icon icon-gen">
-                        <use xlink:href="#icon-gen"></use>
-                    </svg>
-                    <div class="service-card-link">Аренда генераторов</div>
+                <a data-serv-title="Электролаборатория и энергоаудит" data-serv-desc="Данная услуга предполагает вызов Машины Первого прямо к дому, локация размещения авто до 100 м от указанной точки. Машина приезжает, заказ сопровождает консультант-экспедитор на месте, на месте оплачивается товар."  data-openbox="modal" data-serv="2" data-src="#modal-rent" href="javascript:;" class="service-card">
+                    <img src="new-files/img/serv-2.svg" alt="">
+                    <div class="service-card-link">Электролаборатория и энергоаудит</div>
+                    <span class="serv-overlay"></span>
                 </a>
-                <a data-openbox="modal" data-src="#modal-rent" href="javascript:;" class="service-card">
-                    <svg class="icon icon-serv">
-                        <use xlink:href="#icon-serv"></use>
-                    </svg>
-                    <div class="service-card-link">Все услуги</div>
+                <a data-serv-title="Монтаж" data-serv-desc="Данная услуга предполагает вызов Машины Первого прямо к дому, локация размещения авто до 100 м от указанной точки. Машина приезжает, заказ сопровождает консультант-экспедитор на месте, на месте оплачивается товар." data-openbox="modal" data-serv="3" data-src="#modal-rent" href="javascript:;" class="service-card">
+                    <img src="new-files/img/serv-3.svg" alt="">
+
+                    <div class="service-card-link">Монтаж</div>
+                    <span class="serv-overlay"></span>
                 </a>
             </div>
             <!--  </div>-->
 
         </section>
+        <!-- new  -->
 
         <section class="contact-us-section ">
             <div class="contact-us-content">
@@ -3309,6 +3313,23 @@
             <div class="victory">Разработано в <a href="http://victory.su/" target="_blank">Victory</a></div>
         </div>
     </footer>
+
+    <div class="nofind">
+        <div class="nofind__left">
+            <div class="nofind__title">
+                Не нашли нужный товар? 
+            </div>
+            <div class="nofind__bottom">
+                <a data-openbox="modal" data-serv="1" data-src="#modal-find"  href="javascript:;" class="nofind__link">Жмите</a>
+                <div class="nofind__close">
+                    скрыть
+                </div>
+            </div>
+        </div>
+        <div class="nofind__right">
+            <img src="new-files/img/nofind.svg" alt="">
+        </div>
+    </div>
 
     <div class="modal-bgr" id="modal-bgr"></div>
     <div class="modal modal-online" id="online-order">
@@ -4382,6 +4403,8 @@
 
         </div>
     </div>
+    
+    <!-- new  -->
     <div class="modal modal-rent" id="modal-rent">
         <div class="modal-content">
             <div class="modal-close" data-modal-close="">
@@ -4389,7 +4412,7 @@
                     <use href="#icon-close"></use>
                 </svg>
             </div>
-            <div class="club-first-block">
+            <!-- <div class="club-first-block">
                 <div>
                     <div class="club-first-icon">
                         <svg class="icon icon-exclamation-mark">
@@ -4399,195 +4422,49 @@
                     <div class="club-first-text">Аренда электроинструментов доступна только для Клуба Первых</div>
                 </div>
                 <a href="http://1electro.h2.victory.su/" class="club-first-link">Узнать подробнее о Клубе Первых</a>
-            </div>
-            <h3>Аренда электроинструмента</h3>
+            </div> -->
+            <h3 class="modal-title-js">Заказ услуги <b>Проектирование</b></h3>
 
-            <form class="rent-items-block">
+            <form class="rent-items-block serv-form-js">
+                <div class="form-line col-2">
+                    <div class="form-item">
+                        <input type="text" name="name" placeholder="Как вас зовут">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                    <div class="form-item">
+                        <input type="tel" name="phone" placeholder="Номер телефона">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                    <div class="form-item">
+                        <input type="email" name="email" placeholder="E-mail">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                    <div class="form-item">
+                        <select id="slim-select" class="info__select">
+                            <option value="Характеристика объекта">Характеристика объекта</option>
+                            <option value="Характеристика объекта1">Характеристика объекта2</option>
+                            <option value="Характеристика объекта2">Характеристика объекта3</option>
+                            <option value="Характеристика объекта3">Характеристика объекта4</option>
+                            <option value="Характеристика объекта4">Характеристика объекта5</option>
+                            <option value="Характеристика объекта5">Характеристика объекта6</option>
+                            <option value="Характеристика объекта6">Характеристика объекта7</option>
+                            <option value="Характеристика объекта7">Характеристика объекта8</option>
+                          </select>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" name="squar" placeholder="Площадь объекта">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                    <div class="form-item">
+                        <input type="text" name="address" placeholder="Адрес">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                </div>
+                <div class="modal-serv-text">
+                    Данная услуга предполагает вызов Машины Первого прямо к дому, локация размещения авто до 100 м от указанной точки. Машина приезжает, заказ сопровождает консультант-экспедитор на месте, на месте оплачивается товар.
+                </div>
                 <div class="scroll-wrapper rent-list bottom-gradient scrollbar-outer" style="position: relative;">
-                    <ul class="rent-list bottom-gradient scrollbar-outer scroll-content scroll-scrolly_visible"
-                        style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 295px;">
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo1(1).png" alt="">
-                                    <span>Бокс с прозрачной крышкой IEK КМПн 2/4 на 4 модуля</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo2(1).png" alt="">
-                                    <span>Дрель-шуруповерт BOSCH UniversalDrill 18</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo3(1).png" alt="">
-                                    <span>Дрель-шуруповерт HAMMER Flex</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo4(1).png" alt="">
-                                    <span>Название продукции в две строки</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo1(1).png" alt="">
-                                    <span>Бокс с прозрачной крышкой IEK КМПн 2/4 на 4 модуля</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo2(1).png" alt="">
-                                    <span>Дрель-шуруповерт BOSCH UniversalDrill 18</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo3(1).png" alt="">
-                                    <span>Дрель-шуруповерт HAMMER Flex</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo4(1).png" alt="">
-                                    <span>Название продукции в две строки</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo1(1).png" alt="">
-                                    <span>Бокс с прозрачной крышкой IEK КМПн 2/4 на 4 модуля</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo2(1).png" alt="">
-                                    <span>Дрель-шуруповерт BOSCH UniversalDrill 18</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo3(1).png" alt="">
-                                    <span>Дрель-шуруповерт HAMMER Flex</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-                        <li class="rent-item form-item">
-                            <label class="checkbox">
-                                <input type="checkbox" name="chb2" value="v1">
-                                <span class="checkbox-item">
-                                    <svg class="icon icon-checkbox">
-                                        <use xlink:href="#icon-checkbox"></use>
-                                    </svg>
-                                </span>
-                                <span class="checkbox-text rent-item-title">
-                                    <img src="./files/promo4(1).png" alt="">
-                                    <span>Название продукции в две строки</span>
-                                </span>
-                            </label>
-                            <div class="form-item-error">неправильно заполнено поле</div>
-                        </li>
-
-                    </ul>
+                   
                     <div class="scroll-element scroll-x scroll-scrolly_visible">
                         <div class="scroll-element_outer">
                             <div class="scroll-element_size"></div>
@@ -4603,11 +4480,121 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-file">
+                    <div class="drop-area">
+                        <div class="my-form">
+                            <div class="form-file-count">
+                                <img src="new-files/img/form-top.svg" alt="Картинка">
+                                <span>0 из 10</span>
+                            </div>
+                            <div class="form-file-title">
+                                Перетащите сюда файлы для отправки
+                            </div>
+                            <div class="form-file-desc">
+                                
+                                <label class="button">
+                                    <p>
+                                        или    <b>Загрузите файлы</b> 
+                                    </p>
+                                    <input type="file" class="multi" id="fileElem1" maxlength="10"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="form-line col-1">
+                    <div class="form-item">
+                        <input type="text" name="text" placeholder="Пояснительный текст для файлов">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                </div>
                 <div class="form-line col-2">
                     <div class="form-item">
-                        <input type="text" name="name" placeholder="Как вас зовут">
+                        <button type="submit" class="btn btn-primary" data-modal-close="">Заказать</button>
+                    </div>
+                    <div class="form-item form-item-bttom-check">
+                        <label class="checkbox form-bottom-check">
+                            <input type="checkbox" name="chb2" value="v1">
+                            <span class="checkbox-item">
+                                <svg class="icon icon-checkbox">
+                                    <use xlink:href="#icon-checkbox"></use>
+                                </svg>
+                            </span>
+                            <span class="checkbox-text rent-item-title text-check">
+                                <span>Отправляя персональные данные, я даю согласие на их обработку.</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal-rent" id="modal-find">
+        <div class="modal-content modal-nofind-content">
+            <div class="modal-close" data-modal-close="">
+                <svg class="icon icon-close">
+                    <use href="#icon-close"></use>
+                </svg>
+            </div>
+            <div class="findform">
+                <div class="findform__left">
+                    <img src="new-files/img/form-find.png" alt="">
+                </div>
+                <div class="findform__right">
+                    <div class="findform__title">
+                        Сделайте онлайн заказ
+                    </div>
+                    <div class="findform__desc">
+                        Напишите нам в любом мессенджере название товара, который вы не нашли, или позвоните нам
+                    </div>
+                    <div class="findform__items">
+                        <a href="#" class="findform__link">
+                            <img src="new-files/img/form-find1.svg" alt="">
+                        </a>
+                        <a href="#" class="findform__link">
+                            <img src="new-files/img/form-find2.svg" alt="">
+                        </a>
+                        <a href="#" class="findform__link">
+                            <img src="new-files/img/form-find3.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- new  -->
+   
+    <!-- new  -->
+    <div class="modal modal-rent" id="modal-collect">
+        <div class="modal-content">
+            <div class="modal-close" data-modal-close="">
+                <svg class="icon icon-close">
+                    <use href="#icon-close"></use>
+                </svg>
+            </div>
+            <!-- <div class="club-first-block">
+                <div>
+                    <div class="club-first-icon">
+                        <svg class="icon icon-exclamation-mark">
+                            <use href="#icon-exclamation-mark"></use>
+                        </svg>
+                    </div>
+                    <div class="club-first-text">Аренда электроинструментов доступна только для Клуба Первых</div>
+                </div>
+                <a href="http://1electro.h2.victory.su/" class="club-first-link">Узнать подробнее о Клубе Первых</a>
+            </div> -->
+            <h3 class="collect__modal-title">Собрать корзину</h3>
+
+            <form class="rent-items-block serv-form-js">
+                <div class="form-item">
+                    <input type="text" name="name" placeholder="ФИО или организация">
+                    <div class="form-item-error">неправильно заполнено поле</div>
+                </div>
+                <div class="form-line col-2">
+                    <div class="form-item">
+                        <input type="email" name="email" placeholder="E-mail">
                         <div class="form-item-error">неправильно заполнено поле</div>
                     </div>
                     <div class="form-item">
@@ -4615,18 +4602,94 @@
                         <div class="form-item-error">неправильно заполнено поле</div>
                     </div>
                 </div>
-                <div class="form-line col-2">
+                <div class="form-line col-1">
                     <div class="form-item">
-                        <button type="submit" class="btn btn-primary" data-modal-close="" disabled="">Заказать</button>
+                        <textarea class="form-file-textarea" type="tel" name="text" placeholder="Сообщение"></textarea>
+                        <div class="form-item-error">неправильно заполнено поле</div>
                     </div>
                 </div>
-                <p class="policy">Нажимая кнопку "Отправить", я даю согласие на обработку моих <a
-                        href="http://1electro.h2.victory.su/">персональных данных.</a></p>
+                <div class="form-file">
+                    <div class="drop-area">
+                        <div class="my-form">
+                            <div class="form-file-count">
+                                <img src="new-files/img/form-top.svg" alt="Картинка">
+                                <span>0 из 10</span>
+                            </div>
+                            <div class="form-file-title">
+                                Перетащите сюда файлы для отправки
+                            </div>
+                            <div class="form-file-desc">
+                                или <label class="button">
+                                    Загрузите файлы
+                                    <input type="file" class="multi" id="fileElem2" maxlength="2"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-line col-2">
+                    <div class="form-item">
+                        <button type="submit" class="btn btn-primary" data-modal-close="">Заказать</button>
+                    </div>
+                    <div class="form-item form-item-bttom-check">
+                        <label class="checkbox form-bottom-check">
+                            <input type="checkbox" name="chb2" value="v1">
+                            <span class="checkbox-item">
+                                <svg class="icon icon-checkbox">
+                                    <use xlink:href="#icon-checkbox"></use>
+                                </svg>
+                            </span>
+                            <span class="checkbox-text rent-item-title text-check">
+                                <span>Отправляя персональные данные, я даю согласие на их обработку.</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
+    <!-- new  -->
 
-
+    <!-- new  -->
+    <div class="modal modal-serv" id="serv">
+        <!--  <div class="modal-bgr"></div>-->
+        <div class="modal-content">
+            <div class="modal-close" data-modal-close="">
+                <svg class="icon icon-close">
+                    <use href="#icon-close"></use>
+                </svg>
+            </div>
+            <div class="modal-title">Закажите доставку</div>
+            <p>Заполните форму для быстрого заказа и в ближайшее время с Вами свяжется наш оператор.</p>
+            <form action="http://1electro.h2.victory.su/">
+                <div class="form-line">
+                    <div class="form-item">
+                        <input type="text" name="name" placeholder="Ваше имя">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                </div>
+                <div class="form-line">
+                    <div class="form-item">
+                        <input type="tel" name="phone" placeholder="Номер телефона">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                </div>
+                <div class="form-line">
+                    <div class="form-item">
+                        <input type="text" name="address" placeholder="Адрес доставки">
+                        <div class="form-item-error">неправильно заполнено поле</div>
+                    </div>
+                </div>
+                <div class="form-line">
+                    <button type="submit" class="btn btn-primary" data-modal-close="">Отправить</button>
+                </div>
+            </form>
+            <p class="policy">Нажимая кнопку "Отправить", я даю согласие на обработку моих <a
+                    href="http://1electro.h2.victory.su/">персональных данных.</a></p>
+        </div>
+    </div>
+    <!-- new  -->
     <div class="modal modal-callback" id="orderDelivery">
         <!--  <div class="modal-bgr"></div>-->
         <div class="modal-content">
@@ -4726,6 +4789,14 @@
         <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
         </div>
     </div>
+    <!-- new  -->
+    <script src="new-files/js/select.js"></script>
+    <script src="new-files/js/file-drop.js"></script>
+    <script src="new-files/js/new.js"></script>
+    <!-- new  -->
+
+    
+    
 </body>
 <div id="vimeo-record-extension"></div>
 
